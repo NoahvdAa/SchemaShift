@@ -98,7 +98,7 @@ final class SchemaShiftImpl implements SchemaShift {
 
         // Make sure the schemashift meta table exists now.
         try (Statement statement = this.connection.createStatement()) {
-            statement.executeQuery(String.format(CREATE_SCHEMASHIFT_META_TABLE, this.migrationsTable));
+            statement.execute(String.format(CREATE_SCHEMASHIFT_META_TABLE, this.migrationsTable));
         }
 
         try (PreparedStatement updateLastMigrationStatement = this.connection.prepareStatement(String.format(UPDATE_LAST_MIGRATION_QUERY, this.migrationsTable))) {
